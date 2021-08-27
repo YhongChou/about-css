@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            min-width: 550px;
+        }
+
+        .footer {
+            clear: both;
+        }
+
+        .header, .footer {
+            height: 20px;
+            line-height: 20px;
+            background-color: pink;
+        }
+
+        /* 1  */
+        .container {
+            /* BFC 避免子元素过高造成坍塌 */
+            height: 200px;
+            overflow: hidden;
+            /* padding 留位置给左右两边 */
+            padding-left: 200px;
+            padding-right: 150px;
+        }
+
+        .item {
+            /* center占了100% left right就会在center下面 */
+            float: left;
+            height: 200px;
+        }
+
+        .center {
+            /* 等于container除去padding的宽度 */
+            width: calc(100% - 150px - 200px);
+            background-color: powderblue;
+        }
+
+        .left {
+            width: 200px;
+            background-color: purple;
+            /* 把left提到container的content里面 用负margin定位 */
+            position: relative;        
+            margin-left: -100%;
+            left: -200px;
+            /* right: 200px; */
+        }
+
+        .right {
+            width: 150px;
+            background-color: salmon;
+            /* 直接拉上来 */
+            /* margin-right: -150px; */
+
+            /* 或加上定位 */
+            position: relative;
+            margin-left: -150px;
+            right: -150px;
+
+        } 
+    </style>
+</head>
+<body>
+    <div class="header">Header</div>
+    <div class="container clearfix">
+        <div class="item center">center</div>
+        <div class="item left">left</div>
+        <div class="item right">right</div>
+    </div>
+    <div class="footer">Footer</div>
+
+    <script>
+        
+    </script>
+</body>
+</html>
