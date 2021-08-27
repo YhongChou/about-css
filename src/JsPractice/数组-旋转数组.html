@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 输入索引，原数组基于输入的索引进行旋转
+
+// function rotateArr(k, arr) {
+//     if(k < 0 || k > arr.length) {
+//         return arr;
+//     }
+// }
+
+// function rotateArr(k) {
+//     if(k < 0 || k > this.length) {
+//         return this;
+//     }
+//     if(k > this.length){
+//         k = k % this.length
+//     }
+
+//     // 拼接数组 -2 concat 0, 3 不包含3
+//     // slice 返回0, 3的新的子数组 不会改变原数组 返回符合筛选的选定的数组 是一个新数组
+//     return this.slice(-k).concat(this.slice(0, this.length - k));
+// }
+
+function rotateArr(k) {
+    if(k < 0 || k > this.length) {
+        return this;
+    }
+    if(k > this.length){
+        k = k % this.length
+    }
+
+    // 拼接数组 -2 concat 0, 3 不包含3
+    // splice 会改变原数组 返回从3开始的被删除的新子数组 原数组也被改变
+    console.log(this.splice(this.length - k));
+    // return this.splice(this.length - k).concat(this);
+    return [...this.splice(this.length - k),...this]
+    
+    // console.log(this.splice(this.length - k), this.slice(0, this.length - k));
+}
+
+// function rotateArr(k) {
+//     if(k < 0 || k > this.length || k === this.length) {
+//         return this;
+//     }
+//     if(k > this.length){
+//         k = k % this.length
+//     }
+//     // 把数组后面的放在前面
+//     // for (let i = 0; i < k; i++) {
+//     //     this.unshift(this.pop())
+//     // }
+//     new Array(k).fill('').forEach(() => {
+//         // console.log('1', this.unshift(this.pop()));
+//         this.unshift(this.pop())
+//     })
+//     return this;
+// }
+Array.prototype.rotate = rotateArr;
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+const k = 2;
+console.log(arr.rotate(k));
+
+    </script>
+</body>
+</html>
