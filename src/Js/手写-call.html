@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Function.prototype.MyCall = function (context) {
+    context = context || window;
+    context.fun = this;
+    const args = [...arguments].slice(1);
+    console.log('args', args);
+    const res = context.fun(...args);
+    console.log('call', res);
+    delete context.fun;
+    return res;
+}
+
+Function.prototype.MyApply = function (context) {
+    context = context || window;
+    context.fun = this;
+    const args = [...arguments].slice(1);
+    let res = null;
+    if (args.length) {
+        res = context.fun(args)
+    } else {
+        res = context.fun();
+    }
+    delete context.fun;
+    console.log('res', res);
+    return res;
+}
+
+Function.prototype.MyBind = function (context, ...args1) {
+    const _this = this;
+    return function Fun(...args2) {
+        console.log(args1, args2);
+        return _this.apply(context, args1.concat(...args2));
+    }
+}
+
+function A(a) {
+    console.log(this.name);
+    console.log(a);
+} 
+
+const B = {
+    name: 'hh'
+}
+// A.MyCall(B, 1);
+// A.MyApply(B, [1, 2, 3]);
+const C = A.MyBind(B, [5, 7]);
+C();
+// console.log(C);
+// const D = new C(9);
+// console.log(D);
+// D(); 
+    </script>
+</body>
+</html>

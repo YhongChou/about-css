@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function fn(arr) {
+        //     const str = arr.toString();
+        //     // console.log(typeof(str1));
+        //     const res = Array(str);
+        //     console.log('res', typeof(res));
+        //     return res;
+        // }
+
+        // const test = [1,[2,[3]]];
+        // fn(test);
+        // console.log(Object.prototype);
+
+
+    function* gen() {
+        // foo(yield '1');
+        yield 'step1';
+        yield 'step2';
+        return 'step3'
+        // yield 'step1';
+        // yield 'step2';
+    }
+    // const res = gen();
+    // console.log(res.next());
+    console.log([...gen()]); // 取到值 数组
+    console.log(Array.from(gen())); // 取到值 数组
+    const [x] = gen(); // 解构赋值 数组[0]
+    console.log(x);
+    // console.log(Array.isArray([...gen()]));
+    // console.log([...gen()] instanceof Array);
+    // console.log([...gen()].__proto__ === Array.prototype);
+    // console.log(Object.prototype.toString.call([...gen()]));
+    // console.log(Array.prototype.isPrototypeOf([...gen()]));
+    for (let item of gen()) {
+        console.log('item', item);
+    }
+    for (let item in gen()) {
+        console.log('item-in', item);
+    }
+    </script>
+</body>
+</html>

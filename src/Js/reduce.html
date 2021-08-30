@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // arr.reduce(function(prev, cur, index, arr){
+            // return pre * cur 表示返回给下一个item的pre的值是pre * cur
+
+        // }, init)
+        const arr = [1, 2, 3, 4, 2];
+        
+        // 1 求和
+        // const sum  = arr.reduce(
+        //     (pre, cur) => {
+        //     console.log('pre', pre, cur);
+        //      return pre + cur
+        //     },
+        //     // 有init值，表示cur有给定的初始值，pre = arr[init], cur = arr[0]
+        //     // 如果没有init值，cur为初始值，pre = arr[0], cur = arr[1]
+        // );
+        // console.log('sum', sum);
+
+
+        // 2 求积
+
+        // 3 数组中某个元素出现的次数
+        const number = arr.reduce((pre, cur) => {
+            console.log('pre', pre);
+            // 用cur做对象pre的key
+            if (cur in pre) {
+                pre[cur] ++
+            } else {
+                pre[cur] = 1
+            }
+            return pre
+        }, {});
+        console.log('number', number);
+
+    </script>
+</body>
+</html>

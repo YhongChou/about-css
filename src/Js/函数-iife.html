@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 自调用匿名函数
+(function() {
+    let a = 1;
+    function fun1() {
+        console.log(a);
+        console.log(a++);
+    };
+    window.test = function() { //向外暴露全局函数
+        console.log(this); // window
+        return {fun1} // 下面用.运算符访问,所以需要用对象的形式暴露
+    }
+})();
+
+test().fun1();
+    </script>
+</body>
+</html>

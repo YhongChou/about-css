@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn(a, b) {
+            // this指向"a"
+            console.log(this);
+        }
+
+        // 复制了一份fn，但是fn ！= fn2
+        const fn2 = fn.bind();
+        const fn3 = fn.bind("a");
+        console.log(fn3);
+        fn3();
+
+        setInterval((function(){
+            console.log(this)
+            // 修改回调中的this
+        }).bind('a'), 100);
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1、创建一个新的promise对象
+        const p = new Promise((resolve, reject) => {
+            console.log('执行器函数 同步')
+            // 2、执行异步操作
+            // setTimeout(() => {
+            //     const time = Date.now();
+            //     // 4、1成功 resolve(Value)
+            //     if (time %2 === 0) {
+            //         // resolve('成功-resolve', time);
+            //         resolve(time);
+            //         // 4、2失败 reject(reason)
+            //     } else {
+            //         reject('失败reject', time);
+            //     }
+            // })
+        })
+
+        console.log('异步任务启动');
+        // 3、promise的状态发生改变时,p.then绑定的函数就会被调用
+        // 如果只有一个默认回调，默认去执行resolve绑定的
+        // 如果此时promise的状态是reject,由于reject没有绑定函数,控制台会报错
+        // setTimeout(() => {
+        //     p.then(
+        //         // 3、1 resolve解决, 执行resolve绑定的函数 onResolve 4、1
+        //         value => {
+        //             console.log('value', value);
+        //             console.log('relove', value)
+        //         },
+        //         // {},
+        //         // // 3、2 reject执行, 执行reject绑定的函数 onRejected 4、2
+        //         reason => {
+        //             // console.log('reject', reason)
+        //             throw new Error('throwe', reason);
+        //         }
+        //     )
+        //     .catch(e => {
+        //         console.log('e', e)
+        //     })
+        // }) //对4.1结果的处理在4之后再处理也可以
+
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(1)
+            })
+        });
+
+        const p2 = Promise.resolve(2);
+        // const p3 = Promise.reject(3);
+
+        // p1.then(v => console.log(v));
+        // p2.then(v => console.log(v));
+        // p3.catch(e => console.log(e));
+
+        // const pAll = Promise.all([p3, p1, p2]);
+        // const pAll = Promise.race([p1, p2, p3]);
+        new Promise((resolve, reject) => {
+            resolve(1)
+        }).then(
+            value => {
+                console.log('allResolve-1', value)
+                // return 2; //resolve
+                // return Promise.resolve(2); //resolve
+                // return Promise.reject(2) //reject
+                throw 2 //reject
+            },
+            reason => {
+                console.log('allReject-1', reason);
+                // return 3;
+            }
+        ).catch(reason => {
+            console.log('catch', reason);
+            return Promise.reject('catch')
+            // throw 'catch'
+            // return Promise.resolve('catch')
+            // return new Promise(() => {})
+        }).then(
+            value => {
+                console.log('allResolve-2', value);
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        console.log('allResolve-2-2');
+                        // resolve(3)
+                        reject(3)
+                    }, 1000)
+                })
+            },
+            // reason => {
+            //     console.log('allReject-2', reason)
+            // }
+        ).then(
+            value => {
+                console.log('allResolve-3', value)
+            },
+            // reason => {
+            //     console.log('allReject-3', reason)
+            // }
+        ).catch(e => console.log('catch-2', e))
+    </script>
+</body>
+</html>

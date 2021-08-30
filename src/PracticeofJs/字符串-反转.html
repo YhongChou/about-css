@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function reverse(str) {
+            // 1 拼接
+            // let res = '';
+            // for (let i = str.lengt - 1; i > 0; i--) {
+            //     res += str[i]
+            // }
+            // return res
+
+            // 2 str -> arr 双指针
+            // let arr = str.split('');
+            // let i = 0,
+            //     j = str.length - 1;
+            // 奇数的时候也能满足,奇数的时候中间位不交换,偶数才交换
+            // while (i < j) {
+            //     [a[j], a[i]] = [a[i], a[j]];
+            //      
+            //     i++;
+            //     j--;
+            // }
+            // return arr.join('');
+
+            // // 3 str -> arr 优化一个变量
+            // let arr = str.split('');
+            // let mid = Math.floor(arr.length/2);
+            // let i = 0,
+                
+            // while(i < mid){
+            //     // 每移动一下，[ij]也收缩一下
+            //     let j = arr.length - i - 1;
+            //     [a[j], a[i]] = [a[i], a[j]];
+            //     i++;
+            // }
+            // return arr.join('');
+
+            // // 4 arr api reverse()
+            // return str.split('').reverse().join('');
+
+            // 5 递归
+            // 递归的时机: 长度大于1 交换头尾
+            // 递归的结束：奇数-长度是1 偶数-空字符串
+            // if (str.length = 0)
+            if (!str.length) {
+                return ''
+            }
+            if (str.length === 1) {
+                return str
+            }
+
+            let end = str.length - 1;
+
+            // 返回的是被删除的数组 splice也一样(只有arr有这个api)
+            return str[end] + reverse(str.slice(1, end)) + str[0];
+
+        }
+
+        console.log(reverse('abcde'));
+        console.log('abcde'.slice(1, 2));
+    </script>
+</body>
+</html>

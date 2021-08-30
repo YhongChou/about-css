@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn(a, b) {
+            console.log(this);
+        }
+
+        fn(); // window
+        fn('a'); // window
+        // console.dir(fn);
+        // fn.apply('a', '1', '2'); //指向参数,以数组传参
+        // fn.call('a', ['1', '2']); //指向参数,以数组传参
+        // 1、借用构造函数，继承属性
+        // Person.prototype.sayHi = function(){}
+
+        // function Student(name,age,gender){
+        //     console.log('this', '1', this); //指向student
+        //     Person.apply(this,[name,age]);
+        //     console.log('this', '2', this);
+        //     this.gender = gender
+        // }
+
+        // var s1 = new Student('狗蛋',18,'男')
+        // console.log('s1', s1);
+
+
+        // 2、求数组最大和最小
+        const arr = [9,10,11];
+        // 不需要指向this
+        // const max = Math.max.apply(null, arr);
+        // const max = Math.max.call(arr);
+        const max = Math.max(...arr);
+        // 等同于
+        const max2 = Math.max(9,10,11);
+        console.log('max', max);
+
+
+        const school = {
+            classes: {
+                stu: {
+                    name: 'Bob',
+                    age: 24,
+                }
+            }
+        }
+
+        const {classes: {stu: {name: myName = ''}}} = school
+
+
+    </script>
+</body>
+</html>
