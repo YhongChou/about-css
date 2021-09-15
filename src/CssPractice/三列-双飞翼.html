@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1 圣杯 */
+        .outer {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .item {
+            float: left;
+            height: 200px;
+        }
+
+        .first {
+            background-color: powderblue;
+            width: 100%;
+        }
+
+        .content {
+            /* 给文字留出空间 */
+            margin-left: 50px;
+            margin-right: 70px;
+        }
+
+        .second {
+            background-color: purple;
+            width: 50px;
+            margin-left: -100%;
+
+        }
+
+        .third {
+            background-color: rosybrown;
+            width: 70px;
+            margin-left: -70px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="outer">
+        <div class="item first">
+            <div class="content">
+                中间中间中间中间
+            </div>
+        </div>
+
+        <div class="item second">
+            内部内部内部内部
+
+        </div>
+        <div class="item third">
+            内部内部内部内部
+        </div>
+
+        </div>
+    </div>
+</body>
+</html>

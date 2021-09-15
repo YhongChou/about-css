@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            background-color: rgb(224, 206, 247);
+            border: 5px solid rebeccapurple;
+            height: 150px;
+            /* 实现居中 */
+            /* display: flex;
+            justify-items: center;
+            align-items: center;
+            /* 垂直居中 */
+            /* text-align: center; */
+
+            position: relative;
+
+        }
+        /* .box:before {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+
+        } */
+
+        .child {
+            /* float: left; */
+            width: 200px;
+            /* height: 150px; */
+            background-color: white;
+            border:1px solid black;
+            padding: 10px;
+            margin: 30px;
+            /* overflow: hidden; */
+            /* display: inline-block; */
+
+            position: absolute;
+
+        } 
+        /* .float {
+            float: left;
+        }
+        .child {
+            overflow: hidden;
+        } */
+
+    </style>
+
+</head>
+<body>
+    <div class="box">
+        <!-- <p class="float">I am a floated box!</p> -->
+        <!-- I am a floated box! -->
+        <div class="child">I am content inside the container.</div>
+        <div class="child">I am content inside the container.</div>
+        <!-- <span class="child">I am content inside the container.</span> -->
+    </div>
+    <!-- <span class="float">I am content inside the container.</span>
+    <span class="child">I am content inside the container.</span> -->
+
+
+</body>
+</html>
